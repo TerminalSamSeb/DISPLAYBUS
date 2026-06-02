@@ -65,11 +65,25 @@ async function loadSchedule(){
 
             let statusClass = "";
 
-if(item.Status.toLowerCase() === "boarding"){
+let status = (item.Status || "").trim().toLowerCase();
+
+if(status === "terjadwal"){
+    statusClass = "status-terjadwal";
+}
+else if(status === "boarding"){
     statusClass = "status-boarding";
 }
-else if(item.Status.toLowerCase() === "siap"){
-    statusClass = "status-siap";
+else if(status === "siap berangkat"){
+    statusClass = "status-siap-berangkat";
+}
+else if(status === "delay"){
+    statusClass = "status-delay";
+}
+else if(status === "canceled"){
+    statusClass = "status-canceled";
+}
+else if(status === "berangkat"){
+    statusClass = "status-berangkat";
 }
             html += `
             <tr>
